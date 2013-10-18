@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
 
 namespace GuidGen.Forms {
@@ -9,9 +10,14 @@ namespace GuidGen.Forms {
 		}
 
 		private void btnGenerate_Click(object sender, EventArgs e) {
-			txtPassword.Text = Guid.NewGuid().ToString("N").ToUpperInvariant();
-			btnClipboard.Enabled = true;
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < 15; i++) {
+				sb.AppendLine(GetGuid());
+			}
+			txtPassword.Text = sb.ToString();
 		}
+
+		private string GetGuid() { return Guid.NewGuid().ToString("N").ToUpperInvariant(); }
 
 		private void btnExit_Click(object sender, EventArgs e) { Close(); }
 
