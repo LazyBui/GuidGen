@@ -67,10 +67,10 @@ namespace GuidGen.Forms {
 			EnableStateOnChildren(grpText.Controls, rbText.Checked);
 		}
 
-		private void EnableStateOnChildren(Control.ControlCollection pControls, bool pEnabled) {
-			foreach (Control ctrl in pControls) {
-				ctrl.Enabled = pEnabled;
-				EnableStateOnChildren(ctrl.Controls, pEnabled);
+		private void EnableStateOnChildren(Control.ControlCollection controls, bool enabled) {
+			foreach (Control ctrl in controls) {
+				ctrl.Enabled = enabled;
+				EnableStateOnChildren(ctrl.Controls, enabled);
 			}
 		}
 	}
